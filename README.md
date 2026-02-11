@@ -4,4 +4,4 @@
 docker-compose up -d
 ```
 
-перейти по ссылке: http://localhost:3000/
+Затем перейти по ссылке: http://localhost:3000/
