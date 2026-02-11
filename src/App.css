@@ -33,14 +33,6 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -53,11 +45,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
 .App {
   min-height: 100vh;
-  background-color: #f5f5f5;
 }
 
 .App-header {
@@ -98,7 +90,7 @@ main {
 
 .filter-control select {
   padding: 8px 12px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 4px;
   font-size: 14px;
   background: white;
@@ -107,32 +99,41 @@ main {
 
 .filter-control select:focus {
   outline: none;
-  border-color: #4d90fe;
+  border: none;
 }
 
 .table-container {
   background: white;
   border-radius: 8px;
-  overflow: hidden;
+  overflow-x: auto;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
+
+.data-table th:nth-child(1) { width: 40px; }
+.data-table th:nth-child(2) { width: 60px; }
+.data-table th:nth-child(3) { width: 25%; }
+.data-table th:nth-child(4) { width: 25%; }
+.data-table th:nth-child(5) { width: 15%; }
+.data-table th:nth-child(6) { width: 15%; }
 
 .data-table thead {
   background-color: #f8f9fa;
 }
 
 .data-table th {
-  padding: 16px;
+  padding: 16px 12px;
   text-align: left;
   font-weight: 600;
   color: #495057;
   border-bottom: 2px solid #dee2e6;
   user-select: none;
+  white-space: nowrap;
 }
 
 .data-table th.sortable {
@@ -145,9 +146,75 @@ main {
 }
 
 .data-table td {
-  padding: 16px;
+  padding: 12px;
   border-bottom: 1px solid #dee2e6;
   color: #212529;
+  word-wrap: break-word;
+}
+
+.expand-cell {
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0 !important;
+}
+
+.expand-icon,
+.expand-placeholder {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 22px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #495057;
+  transition: all 0.2s;
+}
+
+.expand-icon {
+  border-color: #dee2e6;
+  background: white;
+}
+
+.expand-icon:hover {
+  background-color: #4d90fe;
+  color: white;
+  border-color: #4d90fe;
+}
+
+.expand-placeholder {
+  border-color: transparent;
+  background: transparent;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.name-content {
+  display: block;
+  padding-left: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.status-badge.active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.inactive {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 .data-row {
@@ -162,69 +229,9 @@ main {
   font-weight: 500;
 }
 
-.expand-cell {
-  width: 40px;
-  padding: 0 !important;
-  text-align: center;
-  cursor: pointer;
-}
-
-.expand-icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  line-height: 22px;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  background: white;
-  font-size: 14px;
-  font-weight: bold;
-  color: #495057;
-  transition: all 0.2s;
-}
-
-.expand-icon:hover {
-  background-color: #4d90fe;
-  color: white;
-  border-color: #4d90fe;
-}
-
-.name-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.status-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.status-badge.active {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.status-badge.inactive {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
 @media (max-width: 768px) {
-  .table-container {
-    overflow-x: auto;
-  }
-  
-  .data-table {
-    min-width: 600px;
-  }
-  
-  .App-header h1 {
-    font-size: 1.4rem;
-  }
+  .data-table th:nth-child(3) { width: 20%; }
+  .data-table th:nth-child(4) { width: 25%; }
+  .data-table th:nth-child(5) { width: 20%; }
+  .data-table th:nth-child(6) { width: 15%; }
 }

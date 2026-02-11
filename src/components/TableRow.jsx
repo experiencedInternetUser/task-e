@@ -20,10 +20,10 @@ const TableRow = ({ item, level, expandedRows, onToggle }) => {
     <>
       <tr className={`data-row ${hasChildren ? 'has-children' : ''}`}>
         <td className="expand-cell" onClick={handleToggle}>
-          {hasChildren && (
-            <span className="expand-icon">
-              {isExpanded ? '−' : '+'}
-            </span>
+          {hasChildren ? (
+            <span className="expand-icon">{isExpanded ? '−' : '+'}</span>
+          ) : (
+            <span className="expand-placeholder"> </span>
           )}
         </td>
         <td>{item.id}</td>
