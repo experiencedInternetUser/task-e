@@ -3,7 +3,8 @@ import React from 'react';
 const TableRow = ({ item, level, expandedRows, onToggle }) => {
   const hasChildren = item.children && item.children.length > 0;
   const isExpanded = expandedRows.has(item.id);
-  
+  const childCount = hasChildren ? item.children.length : 0;
+
   const handleToggle = (e) => {
     e.stopPropagation();
     if (hasChildren) {
@@ -30,6 +31,9 @@ const TableRow = ({ item, level, expandedRows, onToggle }) => {
         <td style={rowStyle}>
           <span className="name-content">
             {item.name}
+            {hasChildren && !isExpanded && (
+              <span className="child-count"> [{childCount}]</span>
+            )}
           </span>
         </td>
         <td>{item.email}</td>

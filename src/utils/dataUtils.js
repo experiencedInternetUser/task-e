@@ -1,4 +1,3 @@
-// Построение древовидной структуры из плоского массива
 export const buildTree = (data) => {
   const map = new Map();
   const roots = [];
@@ -23,7 +22,6 @@ export const buildTree = (data) => {
   return roots;
 };
 
-// Фильтрация дерева
 export const filterTree = (tree, filterType) => {
   const filterFunction = (nodes) => {
     return nodes
@@ -45,7 +43,6 @@ export const filterTree = (tree, filterType) => {
   return filterFunction(tree);
 };
 
-// Сортировка дерева
 export const sortTree = (tree, sortBy, direction) => {
   const sortFunction = (nodes) => {
     return [...nodes]
@@ -76,7 +73,6 @@ export const sortTree = (tree, sortBy, direction) => {
   return sortFunction(tree);
 };
 
-// Рекурсивный поиск узла в дереве
 export const findNode = (tree, id) => {
   for (const node of tree) {
     if (node.id === id) return node;
